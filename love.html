@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine Surprise ❤️</title>
+
+<style>
+
+body{
+margin:0;
+padding:0;
+background:black;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:Arial;
+color:white;
+text-align:center;
+overflow:hidden;
+}
+
+.container{
+position:relative;
+z-index:2;
+}
+
+h1{
+font-size:30px;
+margin-bottom:30px;
+}
+
+button{
+padding:12px 25px;
+font-size:18px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+margin:10px;
+}
+
+#yes{
+background:#00ff88;
+color:black;
+}
+
+#no{
+background:#ff0044;
+color:white;
+position:absolute;
+}
+
+canvas{
+position:absolute;
+top:0;
+left:0;
+z-index:1;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<canvas id="canvas"></canvas>
+
+<div class="container">
+
+<h1>I Love You Sabiha ❤️</h1>
+
+<button id="yes" onclick="fireworks()">Yes ❤️</button>
+
+<button id="no">No 💔</button>
+
+</div>
+
+<script>
+
+var no=document.getElementById("no");
+
+no.addEventListener("mouseover",move);
+no.addEventListener("touchstart",move);
+
+function move(){
+
+var x=Math.random()*(window.innerWidth-100);
+var y=Math.random()*(window.innerHeight-50);
+
+no.style.left=x+"px";
+no.style.top=y+"px";
+
+}
+
+
+// Fireworks
+
+function fireworks(){
+
+var canvas=document.getElementById("canvas");
+var ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+for(let i=0;i<200;i++){
+
+setTimeout(function(){
+
+ctx.beginPath();
+
+ctx.arc(
+Math.random()*canvas.width,
+Math.random()*canvas.height,
+5,
+0,
+Math.PI*2
+);
+
+ctx.fillStyle=
+"hsl("+Math.random()*360+",100%,50%)";
+
+ctx.fill();
+
+},i*10);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
